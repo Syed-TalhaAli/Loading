@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequential Loader</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .wrapper {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            transition: all 0.5s linear;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: darkgray;
+            perspective: 1000px;
+        }
+
+        .loader-container {
+            width: 30px;
+            height: 5px;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 350px;
+            animation: flip 8s linear infinite;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes flip {
+            0% {
+                transform: translate(0, 0)
+            }
+
+            10% {
+                transform: translate(100px, 100px)
+            }
+
+            20% {
+                transform: translate(200px, -100px)
+            }
+
+            30% {
+                transform: translate(300px, 100px)
+            }
+
+            40% {
+                transform: translate(400px, -100px);
+            }
+
+            50% {
+                transform: translate(500px, 100px);
+            }
+
+            60% {
+                transform: translate(400px, -100px);
+            }
+
+            70% {
+                transform: translate(300px, 100px);
+            }
+
+            80% {
+                transform: translate(200px, -100px);
+            }
+
+            90% {
+                transform: translate(100px, 100px);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        .child {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 10%;
+            transform: rotate(calc(30deg * var(--i))) translate(0, -40px);
+            transform-origin: center center;
+            padding: 50px;
+            border: 2px solid whitesmoke;
+        }
+
+        /* .child::before {
+        content: '❤';
+        color: red !important;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        animation: changeColor 1s infinite;
+        padding: 30px;
+
+        } */
+
+        @keyframes changeColor {
+            0% {
+                color: red;
+            }
+
+            25% {
+                color: blue;
+                scale: 2;
+            }
+
+            50% {
+                color: green;
+            }
+
+            75% {
+                color: aqua;
+                scale: 2;
+            }
+
+            100% {
+                color: blueviolet;
+
+            }
+        }
+
+        .child span {
+            position: absolute;
+            inset: 10px;
+            width: 10px;
+            height: 10px;
+            transform-origin: center;
+            animation: moveOutIn 1s ease-in-out infinite;
+            /* animation-delay: calc(1s * var(--i)); */
+
+        }
+
+        @keyframes moveOutIn {
+
+            0%,
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(-50px);
+
+            }
+        }
+
+        .child:nth-child(odd) span {
+            background-color: white;
+            box-shadow: 0px 0px 15px red;
+            border-radius: 50%;
+
+
+        }
+
+        .child:nth-child(even) span {
+            background-color: red;
+            box-shadow: 0px 0px 15px black;
+            border-radius: 50%;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper" id="up">
+        <div class="loader-container">
+            <div style="--i:1;" class="child"><span></span></div>
+            <div style="--i:2;" class="child"><span></span></div>
+            <div style="--i:3;" class="child"><span></span></div>
+            <div style="--i:4;" class="child"><span></span></div>
+            <div style="--i:5;" class="child"><span></span></div>
+            <div style="--i:6;" class="child"><span></span></div>
+            <div style="--i:7;" class="child"><span></span></div>
+            <div style="--i:8;" class="child"><span></span></div>
+            <div style="--i:9;" class="child"><span></span></div>
+            <div style="--i:10;" class="child"><span></span></div>
+            <div style="--i:11;" class="child"><span></span></div>
+            <div style="--i:12;" class="child"><span></span></div>
+        </div>
+    </div>
+
+    <h1>Welcome to Website</h1>
+
+
+    <script>
+        // const up = document.querySelector("#up");
+
+        // function upWrapper() {
+        //     up.style.transform = "translateY(-100%)";
+        // }
+
+        // setTimeout(function () {
+        //     upWrapper();
+
+        // }, 3000)
+    </script>
+</body>
+
+</html>
